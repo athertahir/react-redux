@@ -201,7 +201,7 @@ var AgentAddModal = function (_React$Component) {
                                 'div',
                                 { className: 'modal-body' },
                                 React.createElement(FormInput, {
-                                    labelvalue: "Agent Name",
+                                    labelvalue: "Application Name",
                                     controlid: "agent-name-control",
                                     inputid: "agent-name-input",
                                     inputtype: "text",
@@ -283,7 +283,7 @@ module.exports = AgentAddModal;
 /* 
 <div className={registerControlsClass}>
     <div className="has-error">
-        <label htmlFor="agent-name-input">Agent Name</label>
+        <label htmlFor="agent-name-input">Application Name</label>
         <div className="field">
             <input type="text" name="name" className="form-control" id="agent-name-input" />
             <div className="input-sm">{this.props.errors.agentName}</div>
@@ -420,7 +420,7 @@ var AgentUpdateModal = function (_React$Component) {
                                 { className: 'modal-body' },
                                 React.createElement(FormInput, {
                                     formwrapper: "form-group",
-                                    labelvalue: "Agent Name",
+                                    labelvalue: "Application Name",
                                     controlid: "agent-name-control",
                                     inputid: "agent-name-input",
                                     inputtype: "text",
@@ -508,7 +508,7 @@ module.exports = AgentUpdateModal;
 
 /*
 <div className="form-group">
-<label htmlFor="agent-name-input">Agent Name</label>
+<label htmlFor="agent-name-input">Application Name</label>
 <input type="text" name="name" className="form-control" id="agent-name-input" defaultValue={this.props.agent["agentName"]}/>
 </div>
 <div className="form-group" id="client-id-control">
@@ -740,7 +740,7 @@ var RegisterAgentPage = function (_React$Component) {
             this.setState({
                 isShowAgentAddDlg: !this.state.isShowAgentAddDlg,
                 addAgentDlg: {
-                    title: "Add New Agent",
+                    title: "Add New Application",
                     submitBtnText: "Register",
                     isProcessing: false
                 },
@@ -801,7 +801,7 @@ var RegisterAgentPage = function (_React$Component) {
             this.state.errors = {}; //clear any previous errors.
             //console.log(agentData.agentName);
             if (agentData.agentName.length === 0) {
-                this.state.errors.agentName = 'Agent Name cannot be empty.';
+                this.state.errors.agentName = 'Application Name cannot be empty.';
                 agentIsValid = false;
             }
             //console.log(agentData.clientId);
@@ -913,7 +913,7 @@ var RegisterAgentPage = function (_React$Component) {
                 React.createElement(
                     'h1',
                     { className: 'display-1', id: 'list-title' },
-                    'Agents'
+                    'Application'
                 ),
                 React.createElement(
                     'form',
@@ -1150,7 +1150,7 @@ var Header = function (_React$Component) {
                             React.createElement(
                                 'a',
                                 { className: 'dropdown-toggle', 'data-toggle': 'dropdown', href: '#' },
-                                this.state.userName,
+                                'Welcome Ather!',
                                 React.createElement('span', { className: 'caret' })
                             ),
                             React.createElement(
@@ -1367,7 +1367,7 @@ var EventList = function (_React$Component) {
                                             React.createElement(
                                                 "td",
                                                 { className: "col-md-4" },
-                                                "Agent Name"
+                                                "Application Name"
                                             ),
                                             React.createElement(
                                                 "td",
@@ -2173,7 +2173,7 @@ var createAgentRow = function(eventType, item,index) {
                     <table className="table table-sm" id={item["Type"]+"-AgentList"}>
                         <tbody>
                             <tr style={{fontWeight:'bold'}}>
-                                <td className="col-md-4">Agent Name</td>
+                                <td className="col-md-4">Application Name</td>
                                 <td className="col-md-4">Duration (mins)</td>
                                 <td className="col-md-4">Actions</td>
                             </tr>                                    
@@ -2206,7 +2206,7 @@ var createAgentRow = function(eventType, item,index) {
                 <table class="table table-sm" id="ChangeSetPostPushEvent">
                     <tbody>
                         <tr style="font-weight:bold">
-                            <td class="col-md-4">Agent Name</td>
+                            <td class="col-md-4">Application Name</td>
                             <td class="col-md-4">Duration</td>
                             <td class="col-md-4">Actions</td>
                         </tr>		
@@ -2394,7 +2394,7 @@ var Modal = function (_React$Component) {
                 React.createElement(
                   'label',
                   { htmlFor: 'agent-list' },
-                  'Agent Name'
+                  'Application Name'
                 ),
                 React.createElement(
                   'select',
@@ -2735,7 +2735,7 @@ var EventList = function (_React$Component) {
                                             React.createElement(
                                                 "td",
                                                 { className: "col-md-3" },
-                                                "Agent Name"
+                                                "Application Name"
                                             ),
                                             React.createElement(
                                                 "td",
