@@ -1138,7 +1138,7 @@ var Header = function (_React$Component) {
                         React.createElement(
                             'a',
                             { className: 'navbar-brand', href: '#', id: 'main-title' },
-                            'IModelJs Agent Configuration'
+                            'Demo React Application'
                         )
                     ),
                     React.createElement(
@@ -2505,7 +2505,7 @@ var Header = function (_React$Component) {
                         React.createElement(
                             'a',
                             { className: 'navbar-brand', href: '#', id: 'main-title' },
-                            'IModelJs Agent Configuration'
+                            'Demo React Application'
                         )
                     ),
                     React.createElement(
@@ -3102,17 +3102,17 @@ var NotFoundPage = function (_React$Component) {
                 React.createElement(
                     'h1',
                     null,
-                    'Page Not Found'
+                    'Welcome to React Demo Application!'
                 ),
                 React.createElement(
                     'p',
                     null,
-                    'Incorrent URL'
+                    'Express side endpoints have been removed for demo purposes.'
                 ),
                 React.createElement(
                     Link,
-                    { to: '/' },
-                    'Back to Home'
+                    { to: '/ui/registeragent' },
+                    'Load new component'
                 )
             );
         }
