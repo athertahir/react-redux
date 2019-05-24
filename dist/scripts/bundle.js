@@ -113,13 +113,13 @@ var FormInput = require('./formInput');
 
 var $ = require('jquery');
 
-var AgentAddModal = function (_React$Component) {
-    _inherits(AgentAddModal, _React$Component);
+var ApplicationAddModal = function (_React$Component) {
+    _inherits(ApplicationAddModal, _React$Component);
 
-    function AgentAddModal(props) {
-        _classCallCheck(this, AgentAddModal);
+    function ApplicationAddModal(props) {
+        _classCallCheck(this, ApplicationAddModal);
 
-        var _this = _possibleConstructorReturn(this, (AgentAddModal.__proto__ || Object.getPrototypeOf(AgentAddModal)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (ApplicationAddModal.__proto__ || Object.getPrototypeOf(ApplicationAddModal)).call(this, props));
 
         var _inputData = { name: "", clientid: "", secret: "", redirecturi: "" };
         _this.setInputData = function (name, value) {
@@ -131,17 +131,17 @@ var AgentAddModal = function (_React$Component) {
         return _this;
     }
 
-    _createClass(AgentAddModal, [{
+    _createClass(ApplicationAddModal, [{
         key: 'onInputChange',
         value: function onInputChange(event) {
             this.setInputData(event.target.name, event.target.value);
         }
     }, {
-        key: 'onAgentAdd',
-        value: function onAgentAdd(event) {
+        key: 'onApplicationAdd',
+        value: function onApplicationAdd(event) {
             event.preventDefault();
             var data = new FormData(event.target);
-            this.props.onAgentAdd(data); //data.get('uploadfile')
+            this.props.onApplicationAdd(data); //data.get('uploadfile')
         }
     }, {
         key: 'clearInputValues',
@@ -173,7 +173,7 @@ var AgentAddModal = function (_React$Component) {
                         { className: 'modal-content' },
                         React.createElement(
                             'form',
-                            { id: 'secret-input-form', role: 'form', encType: 'multipart/form-data', method: 'post', onSubmit: this.onAgentAdd.bind(this) },
+                            { id: 'secret-input-form', role: 'form', encType: 'multipart/form-data', method: 'post', onSubmit: this.onApplicationAdd.bind(this) },
                             React.createElement(
                                 'div',
                                 { className: 'modal-header' },
@@ -193,7 +193,7 @@ var AgentAddModal = function (_React$Component) {
                                 ),
                                 React.createElement(
                                     'h4',
-                                    { className: 'modal-title', id: 'agent-config-title' },
+                                    { className: 'modal-title', id: 'application-config-title' },
                                     this.props.dialogTitle
                                 )
                             ),
@@ -201,13 +201,13 @@ var AgentAddModal = function (_React$Component) {
                                 'div',
                                 { className: 'modal-body' },
                                 React.createElement(FormInput, {
-                                    labelvalue: "Agent Name",
-                                    controlid: "agent-name-control",
-                                    inputid: "agent-name-input",
+                                    labelvalue: "Application Name",
+                                    controlid: "application-name-control",
+                                    inputid: "application-name-input",
                                     inputtype: "text",
-                                    inputname: "agentName",
+                                    inputname: "applicationName",
                                     onChange: this.onInputChange.bind(this),
-                                    error: this.props.errors.agentName }),
+                                    error: this.props.errors.applicationName }),
                                 React.createElement(FormInput, {
 
                                     labelvalue: "Client ID",
@@ -250,7 +250,7 @@ var AgentAddModal = function (_React$Component) {
                                 { className: 'modal-footer' },
                                 React.createElement(
                                     'button',
-                                    { type: 'submit', className: 'btn btn-primary', id: 'agent-config-submit' },
+                                    { type: 'submit', className: 'btn btn-primary', id: 'application-config-submit' },
                                     this.props.submitBtnText
                                 )
                             )
@@ -266,27 +266,27 @@ var AgentAddModal = function (_React$Component) {
         }
     }]);
 
-    return AgentAddModal;
+    return ApplicationAddModal;
 }(React.Component);
 
-AgentAddModal.propTypes = {
+ApplicationAddModal.propTypes = {
     onClose: PropTypes.func.isRequired,
     show: PropTypes.bool.isRequired,
-    onAgentAdd: PropTypes.func.isRequired,
+    onApplicationAdd: PropTypes.func.isRequired,
     dialogTitle: PropTypes.string.isRequired,
     submitBtnText: PropTypes.string.isRequired,
     isProcessing: PropTypes.bool.isRequired
 };
 
-module.exports = AgentAddModal;
+module.exports = ApplicationAddModal;
 
 /* 
 <div className={registerControlsClass}>
     <div className="has-error">
-        <label htmlFor="agent-name-input">Agent Name</label>
+        <label htmlFor="application-name-input">Application Name</label>
         <div className="field">
-            <input type="text" name="name" className="form-control" id="agent-name-input" />
-            <div className="input-sm">{this.props.errors.agentName}</div>
+            <input type="text" name="name" className="form-control" id="application-name-input" />
+            <div className="input-sm">{this.props.errors.applicationName}</div>
         </div>    
     </div>
 </div>
@@ -327,13 +327,13 @@ var React = require('react');
 var PropTypes = require('prop-types');
 var FormInput = require('./formInput');
 
-var AgentUpdateModal = function (_React$Component) {
-    _inherits(AgentUpdateModal, _React$Component);
+var ApplicationUpdateModal = function (_React$Component) {
+    _inherits(ApplicationUpdateModal, _React$Component);
 
-    function AgentUpdateModal(props) {
-        _classCallCheck(this, AgentUpdateModal);
+    function ApplicationUpdateModal(props) {
+        _classCallCheck(this, ApplicationUpdateModal);
 
-        var _this = _possibleConstructorReturn(this, (AgentUpdateModal.__proto__ || Object.getPrototypeOf(AgentUpdateModal)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (ApplicationUpdateModal.__proto__ || Object.getPrototypeOf(ApplicationUpdateModal)).call(this, props));
 
         var _inputData = { name: "", clientid: "", secret: "", redirecturi: "" };
         _this.setInputData = function (name, value) {
@@ -345,40 +345,40 @@ var AgentUpdateModal = function (_React$Component) {
         return _this;
     }
 
-    _createClass(AgentUpdateModal, [{
+    _createClass(ApplicationUpdateModal, [{
         key: 'onInputChange',
         value: function onInputChange(event) {
             this.setInputData(event.target.name, event.target.value);
         }
     }, {
-        key: 'onAgentUpdate',
-        value: function onAgentUpdate(event) {
+        key: 'onApplicationUpdate',
+        value: function onApplicationUpdate(event) {
             event.preventDefault();
 
-            var agentInfo = {
-                agentId: this.getInputData("id"),
-                agentName: this.getInputData("agentname"),
+            var applicationInfo = {
+                applicationId: this.getInputData("id"),
+                applicationName: this.getInputData("applicationname"),
                 clientId: this.getInputData("clientid"),
                 clientSecret: this.getInputData("secret"),
                 redirectUri: this.getInputData("redirectUri")
             };
-            //console.log("agentInfo:" + agentInfo);
-            this.props.onAgentUpdate(agentInfo); //, this.props.agentIndex);
+            //console.log("applicationInfo:" + applicationInfo);
+            this.props.onApplicationUpdate(applicationInfo); //, this.props.applicationIndex);
         }
     }, {
         key: 'render',
         value: function render() {
 
             // Render nothing if the "show" prop is false
-            //if(!this.props.dialogProps.isShowAgentUpdateDlg) {
-            if (!this.props.isShowAgentUpdateDlg) {
+            //if(!this.props.dialogProps.isShowApplicationUpdateDlg) {
+            if (!this.props.isShowApplicationUpdateDlg) {
                 return null;
             }
-            this.setInputData("id", this.props.agentToUpdate["agentId"]);
-            this.setInputData("agentname", this.props.agentToUpdate["agentName"]);
-            this.setInputData("clientid", this.props.agentToUpdate["clientId"]);
-            this.setInputData("secret", this.props.agentToUpdate["clientSecret"]);
-            this.setInputData("redirecturi", this.props.agentToUpdate["redirectUri"]);
+            this.setInputData("id", this.props.applicationToUpdate["applicationId"]);
+            this.setInputData("applicationname", this.props.applicationToUpdate["applicationName"]);
+            this.setInputData("clientid", this.props.applicationToUpdate["clientId"]);
+            this.setInputData("secret", this.props.applicationToUpdate["clientSecret"]);
+            this.setInputData("redirecturi", this.props.applicationToUpdate["redirectUri"]);
 
             return React.createElement(
                 'div',
@@ -391,7 +391,7 @@ var AgentUpdateModal = function (_React$Component) {
                         { className: 'modal-content' },
                         React.createElement(
                             'form',
-                            { id: 'secret-input-form', role: 'form', encType: 'multipart/form-data', method: 'post', onSubmit: this.onAgentUpdate.bind(this) },
+                            { id: 'secret-input-form', role: 'form', encType: 'multipart/form-data', method: 'post', onSubmit: this.onApplicationUpdate.bind(this) },
                             React.createElement(
                                 'div',
                                 { className: 'modal-header' },
@@ -411,8 +411,8 @@ var AgentUpdateModal = function (_React$Component) {
                                 ),
                                 React.createElement(
                                     'h4',
-                                    { className: 'modal-title', id: 'agent-config-title' },
-                                    'Update Agent'
+                                    { className: 'modal-title', id: 'application-config-title' },
+                                    'Update Application'
                                 )
                             ),
                             React.createElement(
@@ -420,13 +420,13 @@ var AgentUpdateModal = function (_React$Component) {
                                 { className: 'modal-body' },
                                 React.createElement(FormInput, {
                                     formwrapper: "form-group",
-                                    labelvalue: "Agent Name",
-                                    controlid: "agent-name-control",
-                                    inputid: "agent-name-input",
+                                    labelvalue: "Application Name",
+                                    controlid: "application-name-control",
+                                    inputid: "application-name-input",
                                     inputtype: "text",
-                                    inputname: "agentname",
-                                    defaultvalue: this.props.agentToUpdate["agentName"],
-                                    error: this.props.errors.agentName,
+                                    inputname: "applicationname",
+                                    defaultvalue: this.props.applicationToUpdate["applicationName"],
+                                    error: this.props.errors.applicationName,
                                     onChange: this.onInputChange.bind(this)
                                 }),
                                 React.createElement(FormInput, {
@@ -436,7 +436,7 @@ var AgentUpdateModal = function (_React$Component) {
                                     inputid: "client-id-input",
                                     inputtype: "text",
                                     inputname: "clientid",
-                                    defaultvalue: this.props.agentToUpdate["clientId"],
+                                    defaultvalue: this.props.applicationToUpdate["clientId"],
                                     error: this.props.errors.clientid,
                                     onChange: this.onInputChange.bind(this)
                                 }),
@@ -447,7 +447,7 @@ var AgentUpdateModal = function (_React$Component) {
                                     inputid: "client-secret-input",
                                     inputtype: "password",
                                     inputname: "secret",
-                                    defaultvalue: this.props.agentToUpdate["clientSecret"],
+                                    defaultvalue: this.props.applicationToUpdate["clientSecret"],
                                     error: this.props.errors.clientsecret,
                                     onChange: this.onInputChange.bind(this)
                                 }),
@@ -458,7 +458,7 @@ var AgentUpdateModal = function (_React$Component) {
                                     inputid: "redirecturi-input",
                                     inputtype: "text",
                                     inputname: "redirecturi",
-                                    defaultvalue: this.props.agentToUpdate["redirectUri"],
+                                    defaultvalue: this.props.applicationToUpdate["redirectUri"],
                                     error: this.props.errors.redirecturi,
                                     onChange: this.onInputChange.bind(this)
                                 })
@@ -468,7 +468,7 @@ var AgentUpdateModal = function (_React$Component) {
                                 { className: 'modal-footer' },
                                 React.createElement(
                                     'button',
-                                    { type: 'submit', className: 'btn btn-primary', id: 'agent-config-submit' },
+                                    { type: 'submit', className: 'btn btn-primary', id: 'application-config-submit' },
                                     'Update'
                                 )
                             )
@@ -484,40 +484,40 @@ var AgentUpdateModal = function (_React$Component) {
         }
     }]);
 
-    return AgentUpdateModal;
+    return ApplicationUpdateModal;
 }(React.Component);
-//onClick={this.onAgentUpdate.bind(this)}
+//onClick={this.onApplicationUpdate.bind(this)}
 
 
-AgentUpdateModal.propTypes = {
-    agentToUpdate: PropTypes.object.isRequired,
+ApplicationUpdateModal.propTypes = {
+    applicationToUpdate: PropTypes.object.isRequired,
     onClose: PropTypes.func.isRequired,
-    onAgentUpdate: PropTypes.func.isRequired
+    onApplicationUpdate: PropTypes.func.isRequired
     //dialogProps: PropTypes.object.isRequired,
-    //agentIndex: PropTypes.number.isRequired
+    //applicationIndex: PropTypes.number.isRequired
 };
 
-AgentUpdateModal.defaultProps = {
+ApplicationUpdateModal.defaultProps = {
     //dialogProps : {
-    isShowAgentUpdateDlg: false,
+    isShowApplicationUpdateDlg: false,
     isShowProcessing: false
     //},
 };
 
-module.exports = AgentUpdateModal;
+module.exports = ApplicationUpdateModal;
 
 /*
 <div className="form-group">
-<label htmlFor="agent-name-input">Agent Name</label>
-<input type="text" name="name" className="form-control" id="agent-name-input" defaultValue={this.props.agent["agentName"]}/>
+<label htmlFor="application-name-input">Application Name</label>
+<input type="text" name="name" className="form-control" id="application-name-input" defaultValue={this.props.application["applicationName"]}/>
 </div>
 <div className="form-group" id="client-id-control">
 <label htmlFor="client-id-input">Client ID</label>
-<input type="text" name="clientid" className="form-control" id="client-id-input" defaultValue={this.props.agent["clientId"]}/>
+<input type="text" name="clientid" className="form-control" id="client-id-input" defaultValue={this.props.application["clientId"]}/>
 </div>
 <div className="form-group" id="client-secret-control">
 <label htmlFor="client-secret-input">Client Secret</label>
-<input type="password" name="secret" className="form-control" id="client-secret-input" defaultValue={this.props.agent["clientSecret"]}/>
+<input type="password" name="secret" className="form-control" id="client-secret-input" defaultValue={this.props.application["clientSecret"]}/>
 </div>
 */
 
@@ -534,16 +534,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var $ = require('jquery');
 
-var AgentService = exports.AgentService = function () {
-	function AgentService() {
-		var apiEndpoint = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "/api/v1.0/agents";
+var ApplicationService = exports.ApplicationService = function () {
+	function ApplicationService() {
+		var apiEndpoint = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "/api/v1.0/applications";
 
-		_classCallCheck(this, AgentService);
+		_classCallCheck(this, ApplicationService);
 
 		this.apiEndpoint = apiEndpoint;
 	}
 
-	_createClass(AgentService, [{
+	_createClass(ApplicationService, [{
 		key: 'list',
 		value: function list() {
 			return $.ajax({
@@ -555,7 +555,7 @@ var AgentService = exports.AgentService = function () {
 		}
 	}]);
 
-	return AgentService;
+	return ApplicationService;
 }();
 
 },{"jquery":49}],6:[function(require,module,exports){
@@ -643,104 +643,104 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var React = require('react');
-var AgentUpdateModal = require('./agentUpdateModal');
-var AgentAddModal = require('./agentAddModal');
+var ApplicationUpdateModal = require('./applicationUpdateModal');
+var ApplicationAddModal = require('./applicationAddModal');
 var _ = require('lodash');
 var toastr = require('toastr');
 
 var $ = require('jquery');
 
-var RegisterAgentPage = function (_React$Component) {
-    _inherits(RegisterAgentPage, _React$Component);
+var RegisterApplicationPage = function (_React$Component) {
+    _inherits(RegisterApplicationPage, _React$Component);
 
-    function RegisterAgentPage(props) {
-        _classCallCheck(this, RegisterAgentPage);
+    function RegisterApplicationPage(props) {
+        _classCallCheck(this, RegisterApplicationPage);
 
-        var _this = _possibleConstructorReturn(this, (RegisterAgentPage.__proto__ || Object.getPrototypeOf(RegisterAgentPage)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (RegisterApplicationPage.__proto__ || Object.getPrototypeOf(RegisterApplicationPage)).call(this, props));
 
         _this.state = {
-            agents: [],
-            isShowAgentAddDlg: false,
-            agentToUpdate: {},
-            addAgentDlg: {
+            applications: [],
+            isShowApplicationAddDlg: false,
+            applicationToUpdate: {},
+            addApplicationDlg: {
                 title: "",
                 submitBtnText: "",
                 isProcessing: false
             },
-            // updateAgentDlg: {
-            isShowAgentUpdateDlg: false,
+            // updateApplicationDlg: {
+            isShowApplicationUpdateDlg: false,
             isShowProcessing: false,
             // },
-            isGetAgentsError: false,
+            isGetApplicationsError: false,
             errors: {}
-            // agentIndex: 0
+            // applicationIndex: 0
         };
 
-        // this.uploadAgentImage = this.uploadAgentImage.bind(this);
+        // this.uploadApplicationImage = this.uploadApplicationImage.bind(this);
         return _this;
     }
 
-    _createClass(RegisterAgentPage, [{
+    _createClass(RegisterApplicationPage, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            this.getAgents();
+            this.getApplications();
         }
     }, {
-        key: 'getAgents',
-        value: function getAgents() {
+        key: 'getApplications',
+        value: function getApplications() {
             return $.ajax({
-                url: '/api/v1.0/agents',
+                url: '/api/v1.0/applications',
                 dataType: 'json',
                 type: "get",
                 cache: false,
                 success: function (data) {
-                    var agents = [];
-                    data.forEach(function (agent, index) {
-                        agents.push(agent);
+                    var applications = [];
+                    data.forEach(function (application, index) {
+                        applications.push(application);
                     });
-                    this.setState({ agents: agents, isGetAgentsError: false });
+                    this.setState({ applications: applications, isGetApplicationsError: false });
                 }.bind(this),
                 error: function (xhr, status, err) {
                     //console.log(err);
-                    this.setState({ isGetAgentsError: true });
+                    this.setState({ isGetApplicationsError: true });
                 }.bind(this)
 
             });
         }
 
-        // toggleAgentUpdateModal (agentIndex) {
-        //     var agentSelected = (!this.state.updateAgentDlg.isShowAgentUpdateDlg) ? this.state.agents[agentIndex] : {} ;
-        //     //agentSelected["agentIndex"] = agentIndex; // add additional index property to the agent object for further reference
+        // toggleApplicationUpdateModal (applicationIndex) {
+        //     var applicationSelected = (!this.state.updateApplicationDlg.isShowApplicationUpdateDlg) ? this.state.applications[applicationIndex] : {} ;
+        //     //applicationSelected["applicationIndex"] = applicationIndex; // add additional index property to the application object for further reference
 
-        //     var updateAgentDlgInfo = Object.assign({},this.state.updateAgentDlg);
-        //     updateAgentDlgInfo.isShowAgentUpdateDlg = !this.state.updateAgentDlg.isShowAgentUpdateDlg;
-        //     updateAgentDlgInfo.isShowProcessing = false;
+        //     var updateApplicationDlgInfo = Object.assign({},this.state.updateApplicationDlg);
+        //     updateApplicationDlgInfo.isShowApplicationUpdateDlg = !this.state.updateApplicationDlg.isShowApplicationUpdateDlg;
+        //     updateApplicationDlgInfo.isShowProcessing = false;
 
         //     this.setState({
-        //         updateAgentDlg: updateAgentDlgInfo,
-        //         agentToUpdate: agentSelected,
-        //         agentIndex: agentIndex,
+        //         updateApplicationDlg: updateApplicationDlgInfo,
+        //         applicationToUpdate: applicationSelected,
+        //         applicationIndex: applicationIndex,
         //         errors:{}
         //     });
 
     }, {
-        key: 'toggleAgentUpdateModal',
-        value: function toggleAgentUpdateModal(selectedAgent) {
+        key: 'toggleApplicationUpdateModal',
+        value: function toggleApplicationUpdateModal(selectedApplication) {
 
             this.setState({
-                agentToUpdate: selectedAgent,
-                isShowAgentUpdateDlg: !this.state.isShowAgentUpdateDlg,
+                applicationToUpdate: selectedApplication,
+                isShowApplicationUpdateDlg: !this.state.isShowApplicationUpdateDlg,
                 isShowProcessing: false,
                 errors: {}
             });
         }
     }, {
-        key: 'toggleAddAgentModal',
-        value: function toggleAddAgentModal() {
+        key: 'toggleAddApplicationModal',
+        value: function toggleAddApplicationModal() {
             this.setState({
-                isShowAgentAddDlg: !this.state.isShowAgentAddDlg,
-                addAgentDlg: {
-                    title: "Add New Agent",
+                isShowApplicationAddDlg: !this.state.isShowApplicationAddDlg,
+                addApplicationDlg: {
+                    title: "Add New Application",
                     submitBtnText: "Register",
                     isProcessing: false
                 },
@@ -748,90 +748,90 @@ var RegisterAgentPage = function (_React$Component) {
             });
         }
 
-        //updateAgentInfo (agentInfo, agentIndex) {
+        //updateApplicationInfo (applicationInfo, applicationIndex) {
 
     }, {
-        key: 'updateAgentInfo',
-        value: function updateAgentInfo(agentInfo) {
+        key: 'updateApplicationInfo',
+        value: function updateApplicationInfo(applicationInfo) {
 
-            //let agentObject = this.createAgentObject(agentInfo["agentName"],agentInfo["clientId"],agentInfo["clientSecret"],agentInfo["redirectUri"]);
-            if (!this.agentInfoIsValid(agentInfo)) {
-                this.setState({ agentToUpdate: agentInfo });
+            //let applicationObject = this.createApplicationObject(applicationInfo["applicationName"],applicationInfo["clientId"],applicationInfo["clientSecret"],applicationInfo["redirectUri"]);
+            if (!this.applicationInfoIsValid(applicationInfo)) {
+                this.setState({ applicationToUpdate: applicationInfo });
                 return;
             }
 
-            //var updateAgentDlgInfo = Object.assign({},this.state.updateAgentDlg);
-            //updateAgentDlgInfo.isShowProcessing = true;
-            //this.setState({updateAgentDlg: updateAgentDlgInfo});
+            //var updateApplicationDlgInfo = Object.assign({},this.state.updateApplicationDlg);
+            //updateApplicationDlgInfo.isShowProcessing = true;
+            //this.setState({updateApplicationDlg: updateApplicationDlgInfo});
             this.setState({ isShowProcessing: true });
 
             $.ajax({
-                url: '/api/v1.0/agents/' + agentInfo['agentId'],
+                url: '/api/v1.0/applications/' + applicationInfo['applicationId'],
                 type: 'put',
-                data: JSON.stringify(agentInfo), //agentInfo),
+                data: JSON.stringify(applicationInfo), //applicationInfo),
                 processData: false,
                 contentType: false,
                 dataType: 'json',
                 success: function (data) {
-                    var agentIndex = _.findIndex(this.state.agents, { 'agentId': data["agentId"] });
-                    this.state.agents[agentIndex] = data;
+                    var applicationIndex = _.findIndex(this.state.applications, { 'applicationId': data["applicationId"] });
+                    this.state.applications[applicationIndex] = data;
 
                     this.setState({
-                        agents: this.state.agents
+                        applications: this.state.applications
                     });
-                    this.toggleAgentUpdateModal({}); //-1);
+                    this.toggleApplicationUpdateModal({}); //-1);
                 }.bind(this),
                 error: function (jXHR, textStatus, errorThrown) {
-                    this.toggleAgentUpdateModal({}); //-1);
+                    this.toggleApplicationUpdateModal({}); //-1);
                     alert(errorThrown);
                 }.bind(this)
             });
         }
     }, {
-        key: 'showAddAgentProcessingSpinner',
-        value: function showAddAgentProcessingSpinner(isShow) {
-            var addAgentDlgProps = Object.assign({}, this.state.addAgentDlg);
-            addAgentDlgProps.isProcessing = true;
-            this.setState({ addAgentDlg: addAgentDlgProps });
+        key: 'showAddApplicationProcessingSpinner',
+        value: function showAddApplicationProcessingSpinner(isShow) {
+            var addApplicationDlgProps = Object.assign({}, this.state.addApplicationDlg);
+            addApplicationDlgProps.isProcessing = true;
+            this.setState({ addApplicationDlg: addApplicationDlgProps });
         }
     }, {
-        key: 'agentInfoIsValid',
-        value: function agentInfoIsValid(agentData) {
-            var agentIsValid = true;
+        key: 'applicationInfoIsValid',
+        value: function applicationInfoIsValid(applicationData) {
+            var applicationIsValid = true;
             this.state.errors = {}; //clear any previous errors.
-            //console.log(agentData.agentName);
-            if (agentData.agentName.length === 0) {
-                this.state.errors.agentName = 'Agent Name cannot be empty.';
-                agentIsValid = false;
+            //console.log(applicationData.applicationName);
+            if (applicationData.applicationName.length === 0) {
+                this.state.errors.applicationName = 'Application Name cannot be empty.';
+                applicationIsValid = false;
             }
-            //console.log(agentData.clientId);
-            if (agentData.clientId.length === 0) {
+            //console.log(applicationData.clientId);
+            if (applicationData.clientId.length === 0) {
                 this.state.errors.clientid = 'Client ID cannot be empty.';
-                agentIsValid = false;
+                applicationIsValid = false;
             }
-            //console.log(agentData.clientSecret);
-            if (agentData.clientSecret.length === 0) {
+            //console.log(applicationData.clientSecret);
+            if (applicationData.clientSecret.length === 0) {
                 this.state.errors.clientsecret = 'Client Secret cannot be empty.';
-                agentIsValid = false;
+                applicationIsValid = false;
             }
-            if (agentData.redirectUri.length === 0) {
+            if (applicationData.redirectUri.length === 0) {
                 this.state.errors.redirecturi = 'RedirectURI cannot be empty.';
-                agentIsValid = false;
+                applicationIsValid = false;
             }
 
             this.setState({ errors: this.state.errors });
-            return agentIsValid;
+            return applicationIsValid;
         }
     }, {
-        key: 'addAgentInfo',
-        value: function addAgentInfo(data) {
-            var agentObject = this.createAgentObject(data.get("agentName"), data.get("clientId"), data.get("clientSecret"), data.get("redirectUri"));
-            if (!this.agentInfoIsValid(agentObject)) {
+        key: 'addApplicationInfo',
+        value: function addApplicationInfo(data) {
+            var applicationObject = this.createApplicationObject(data.get("applicationName"), data.get("clientId"), data.get("clientSecret"), data.get("redirectUri"));
+            if (!this.applicationInfoIsValid(applicationObject)) {
                 return;
             }
-            this.showAddAgentProcessingSpinner(true);
+            this.showAddApplicationProcessingSpinner(true);
             $.ajax({
-                url: "/api/v1.0/agents",
+                url: "/api/v1.0/applications",
                 type: 'post',
                 //timeout: 0,   Rest call timeout
                 data: data,
@@ -839,40 +839,40 @@ var RegisterAgentPage = function (_React$Component) {
                 contentType: false,
                 success: function (data) {
 
-                    toastr.success("agent uploaded successfully");
-                    var agents = this.state.agents;
-                    agents.push(JSON.parse(data));
+                    toastr.success("application uploaded successfully");
+                    var applications = this.state.applications;
+                    applications.push(JSON.parse(data));
                     this.setState({
-                        agents: agents
+                        applications: applications
                     });
-                    this.toggleAddAgentModal();
+                    this.toggleAddApplicationModal();
                 }.bind(this),
                 error: function (jXHR, textStatus, errorThrown) {
                     //alert(errorThrown);
-                    toastr.error("error encounterd uploading agent image");
-                    this.toggleAddAgentModal();
+                    toastr.error("error encounterd uploading application image");
+                    this.toggleAddApplicationModal();
                 }.bind(this)
             });
-            // if (this.state.addAgentDlg.dialogType ==="UPLOAD") {
-            // this.uploadAgentImage(data);
+            // if (this.state.addApplicationDlg.dialogType ==="UPLOAD") {
+            // this.uploadApplicationImage(data);
             // }
             // else {
-            //     let agentObject = this.createAgentObject(data["agentname"],data["clientid"],data["clientsecret"],data["redirecturi"]);
-            //     if (!this.agentInfoIsValid(agentObject)) {
+            //     let applicationObject = this.createApplicationObject(data["applicationname"],data["clientid"],data["clientsecret"],data["redirecturi"]);
+            //     if (!this.applicationInfoIsValid(applicationObject)) {
             //         return;
             //     }
-            //     this.showAddAgentProcessingSpinner(true);
+            //     this.showAddApplicationProcessingSpinner(true);
             //     $.ajax({
-            //         url: "/api/v1.0/agent",
+            //         url: "/api/v1.0/application",
             //         type: 'post',
-            //         data: JSON.stringify(agentObject),
+            //         data: JSON.stringify(applicationObject),
             //         processData: false,
             //         contentType: false,
             //         dataType: 'json',
             //         success: function (data) {
             //             this.setState({
-            //                 addAgentDlg: {
-            //                     title: "Upload Agent Image",
+            //                 addApplicationDlg: {
+            //                     title: "Upload Application Image",
             //                     submitBtnText:"Upload",
             //                     dialogType:"UPLOAD",
             //                     isProcessing: false
@@ -881,17 +881,17 @@ var RegisterAgentPage = function (_React$Component) {
             //         }.bind(this),
             //         error: function (jXHR, textStatus, errorThrown) {
             //             //alert(errorThrown);
-            //             toastr.error("error encounterd adding agent");
-            //             this.toggleAddAgentModal();
+            //             toastr.error("error encounterd adding application");
+            //             this.toggleAddApplicationModal();
             //         }.bind(this)
             //     });
             // }
         }
     }, {
-        key: 'createAgentObject',
-        value: function createAgentObject(agentName, clientId, clientSecret, redirecturi) {
+        key: 'createApplicationObject',
+        value: function createApplicationObject(applicationName, clientId, clientSecret, redirecturi) {
             return {
-                agentName: agentName,
+                applicationName: applicationName,
                 clientId: clientId,
                 clientSecret: clientSecret,
                 redirectUri: redirecturi
@@ -900,11 +900,11 @@ var RegisterAgentPage = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            var createAgentList = function createAgentList(item, index) {
+            var createApplicationList = function createApplicationList(item, index) {
                 return React.createElement(
                     'a',
-                    { key: "agent-" + index, href: '#', className: 'list-group-item list-group-item-action', onClick: this.toggleAgentUpdateModal.bind(this, item /*index*/), id: "agent-" + index },
-                    item['agentName']
+                    { key: "application-" + index, href: '#', className: 'list-group-item list-group-item-action', onClick: this.toggleApplicationUpdateModal.bind(this, item /*index*/), id: "application-" + index },
+                    item['applicationName']
                 );
             };
             return React.createElement(
@@ -913,7 +913,7 @@ var RegisterAgentPage = function (_React$Component) {
                 React.createElement(
                     'h1',
                     { className: 'display-1', id: 'list-title' },
-                    'Agents'
+                    'Applications'
                 ),
                 React.createElement(
                     'form',
@@ -923,12 +923,12 @@ var RegisterAgentPage = function (_React$Component) {
                         { className: 'input-group' },
                         React.createElement(
                             'div',
-                            { className: 'input-group-btn', id: 'add-agent-btn' },
+                            { className: 'input-group-btn', id: 'add-application-btn' },
                             React.createElement(
                                 'button',
-                                { type: 'button', className: 'btn btn-default', onClick: this.toggleAddAgentModal.bind(this) },
+                                { type: 'button', className: 'btn btn-default', onClick: this.toggleAddApplicationModal.bind(this) },
                                 React.createElement('span', { className: 'glyphicon glyphicon-plus' }),
-                                ' Add Agent'
+                                ' Add Application'
                             )
                         )
                     ),
@@ -954,40 +954,40 @@ var RegisterAgentPage = function (_React$Component) {
                 React.createElement(
                     'h3',
                     { className: 'display-4 list-objects' },
-                    'List'
+                    'Try to save agent to get error popup'
                 ),
                 React.createElement(
                     'div',
                     { id: 'datalist', className: 'list-group' },
-                    this.state.isGetAgentsError ? "Unable to retrieve data from server" : this.state.agents.map(createAgentList, this)
+                    this.state.isGetApplicationsError ? "Unable to retrieve data from server" : this.state.applications.map(createApplicationList, this)
                 ),
-                React.createElement(AgentUpdateModal, {
-                    isShowAgentUpdateDlg: this.state.isShowAgentUpdateDlg,
+                React.createElement(ApplicationUpdateModal, {
+                    isShowApplicationUpdateDlg: this.state.isShowApplicationUpdateDlg,
                     isShowProcessing: this.state.isShowProcessing
-                    //dialogProps={this.state.updateAgentDlg} 
-                    , agentToUpdate: this.state.agentToUpdate
-                    //agentIndex ={this.state.agentIndex}
-                    , onClose: this.toggleAgentUpdateModal.bind(this, {}) // -1)}
-                    , onAgentUpdate: this.updateAgentInfo.bind(this),
+                    //dialogProps={this.state.updateApplicationDlg} 
+                    , applicationToUpdate: this.state.applicationToUpdate
+                    //applicationIndex ={this.state.applicationIndex}
+                    , onClose: this.toggleApplicationUpdateModal.bind(this, {}) // -1)}
+                    , onApplicationUpdate: this.updateApplicationInfo.bind(this),
                     errors: this.state.errors }),
-                React.createElement(AgentAddModal, {
-                    show: this.state.isShowAgentAddDlg,
-                    onClose: this.toggleAddAgentModal.bind(this),
-                    onAgentAdd: this.addAgentInfo.bind(this),
-                    dialogTitle: this.state.addAgentDlg.title,
-                    submitBtnText: this.state.addAgentDlg.submitBtnText,
-                    isProcessing: this.state.addAgentDlg.isProcessing,
+                React.createElement(ApplicationAddModal, {
+                    show: this.state.isShowApplicationAddDlg,
+                    onClose: this.toggleAddApplicationModal.bind(this),
+                    onApplicationAdd: this.addApplicationInfo.bind(this),
+                    dialogTitle: this.state.addApplicationDlg.title,
+                    submitBtnText: this.state.addApplicationDlg.submitBtnText,
+                    isProcessing: this.state.addApplicationDlg.isProcessing,
                     errors: this.state.errors })
             );
         }
     }]);
 
-    return RegisterAgentPage;
+    return RegisterApplicationPage;
 }(React.Component);
 
-module.exports = RegisterAgentPage;
+module.exports = RegisterApplicationPage;
 
-},{"./agentAddModal":3,"./agentUpdateModal":4,"jquery":49,"lodash":50,"react":90,"toastr":92}],8:[function(require,module,exports){
+},{"./applicationAddModal":3,"./applicationUpdateModal":4,"jquery":49,"lodash":50,"react":90,"toastr":92}],8:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -1013,7 +1013,7 @@ var ProjectPage = require('./projects/projectPage');
 var IModelPage = require('./imodels/iModelPage');
 var ManageIModelPage = require('./imodels/manageIModelPage');
 var LogsIModelPage = require('./logs/logsPage');
-var RegisterAgentPage = require('./agents/registerAgentPage');
+var RegisterApplicationPage = require('./applications/registerApplicationPage');
 var NotFoundPage = require('./notFoundPage');
 var Header = require('./common/header');
 var LogoutHeader = require('./logout/header');
@@ -1054,7 +1054,7 @@ var App = function (_React$Component) {
                         React.createElement(Route, { exact: true, path: '/ui/iModels/:projectid', component: IModelPage }),
                         React.createElement(Route, { path: '/ui/iModel/:projectid/:imodelid/:imodelname', component: ManageIModelPage }),
                         React.createElement(Route, { path: '/ui/logs/:projectid/:imodelid/:imodelname', component: LogsIModelPage }),
-                        React.createElement(Route, { path: '/ui/registeragent', component: RegisterAgentPage }),
+                        React.createElement(Route, { path: '/ui/registerapplication', component: RegisterApplicationPage }),
                         React.createElement(Route, { path: '/ui/logout', component: logOutPage }),
                         React.createElement(Route, { component: NotFoundPage })
                     )
@@ -1073,7 +1073,7 @@ var App = function (_React$Component) {
 
 module.exports = App;
 
-},{"./agents/registerAgentPage":7,"./common/header":9,"./imodels/iModelPage":12,"./imodels/manageIModelPage":13,"./logout/header":15,"./logout/logOutPage":16,"./logs/logsPage":18,"./notFoundPage":20,"./projects/projectPage":22,"react":90,"react-router-dom":75}],9:[function(require,module,exports){
+},{"./applications/registerApplicationPage":7,"./common/header":9,"./imodels/iModelPage":12,"./imodels/manageIModelPage":13,"./logout/header":15,"./logout/logOutPage":16,"./logs/logsPage":18,"./notFoundPage":20,"./projects/projectPage":22,"react":90,"react-router-dom":75}],9:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -1150,7 +1150,7 @@ var Header = function (_React$Component) {
                             React.createElement(
                                 'a',
                                 { className: 'dropdown-toggle', 'data-toggle': 'dropdown', href: '#' },
-                                this.state.userName,
+                                'Ather Tahir',
                                 React.createElement('span', { className: 'caret' })
                             ),
                             React.createElement(
@@ -1170,8 +1170,8 @@ var Header = function (_React$Component) {
                                     null,
                                     React.createElement(
                                         Link,
-                                        { to: '/ui/registeragent' },
-                                        'Register Agent'
+                                        { to: '/ui/registerapplication' },
+                                        'Register Application'
                                     )
                                 ),
                                 React.createElement(
@@ -1230,18 +1230,18 @@ var EventList = function (_React$Component) {
     }
 
     _createClass(EventList, [{
-        key: "onRemoveAgent",
-        value: function onRemoveAgent(eventType, agentIndex, event) {
+        key: "onRemoveApplication",
+        value: function onRemoveApplication(eventType, applicationIndex, event) {
 
             event.preventDefault();
-            this.props.onRemoveAgent(eventType, agentIndex);
+            this.props.onRemoveApplication(eventType, applicationIndex);
         }
     }, {
-        key: "onAddAgentClick",
-        value: function onAddAgentClick(eventName, event) {
+        key: "onAddApplicationClick",
+        value: function onAddApplicationClick(eventName, event) {
 
             event.preventDefault();
-            this.props.onAddAgentClick(eventName);
+            this.props.onAddApplicationClick(eventName);
         }
     }, {
         key: "toggleCollapseList",
@@ -1256,20 +1256,20 @@ var EventList = function (_React$Component) {
             this.props.onValueChange(event.target.value, eventIndex, index);
         }
     }, {
-        key: "getAgentName",
-        value: function getAgentName(agentId) {
-            if (this.props.registeredAgents[agentId]) {
-                return this.props.registeredAgents[agentId].agentName;
+        key: "getApplicationName",
+        value: function getApplicationName(applicationId) {
+            if (this.props.registeredApplications[applicationId]) {
+                return this.props.registeredApplications[applicationId].applicationName;
             }
         }
     }, {
         key: "render",
         value: function render() {
 
-            var createAgentRow = function createAgentRow(eventType, eventIndex, item, agentIndex) {
+            var createApplicationRow = function createApplicationRow(eventType, eventIndex, item, applicationIndex) {
                 return React.createElement(
                     "tr",
-                    { key: "agent-row" + agentIndex },
+                    { key: "application-row" + applicationIndex },
                     React.createElement(
                         "td",
                         null,
@@ -1277,7 +1277,7 @@ var EventList = function (_React$Component) {
                         React.createElement(
                             "p",
                             null,
-                            this.getAgentName(item["agentId"])
+                            this.getApplicationName(item["applicationId"])
                         ),
                         " "
                     ),
@@ -1286,7 +1286,7 @@ var EventList = function (_React$Component) {
                         null,
                         React.createElement(
                             "select",
-                            { onChange: this.onValueChange.bind(this, eventIndex, agentIndex), value: item['timeout'] },
+                            { onChange: this.onValueChange.bind(this, eventIndex, applicationIndex), value: item['timeout'] },
                             React.createElement(
                                 "option",
                                 { value: "900000" },
@@ -1314,7 +1314,7 @@ var EventList = function (_React$Component) {
                         null,
                         React.createElement(
                             "button",
-                            { type: "button", className: " btn btn-xs", onClick: this.onRemoveAgent.bind(this, eventType, agentIndex) },
+                            { type: "button", className: " btn btn-xs", onClick: this.onRemoveApplication.bind(this, eventType, applicationIndex) },
                             React.createElement("span", { className: "glyphicon glyphicon-remove" })
                         )
                     )
@@ -1348,16 +1348,16 @@ var EventList = function (_React$Component) {
                             { id: item["type"] + "-div-body", "aria-expanded": this.props.eventExpandedState[item["type"]] ? "true" : "false", className: this.props.eventExpandedState[item["type"]] ? "" : "hidden" },
                             React.createElement(
                                 "button",
-                                { type: "button", id: item["type"] + "-button", className: "col-md-2 col-md-offset-10 btn btn-default", onClick: this.onAddAgentClick.bind(this, item["type"]) },
+                                { type: "button", id: item["type"] + "-button", className: "col-md-2 col-md-offset-10 btn btn-default", onClick: this.onAddApplicationClick.bind(this, item["type"]) },
                                 React.createElement("span", { className: "glyphicon glyphicon-plus" }),
-                                " Add Agent"
+                                " Add Application"
                             ),
                             React.createElement(
                                 "div",
                                 { className: "col-md-12", style: { marginTop: 15 } },
                                 React.createElement(
                                     "table",
-                                    { className: "table table-sm", id: item["type"] + "-AgentList" },
+                                    { className: "table table-sm", id: item["type"] + "-ApplicationList" },
                                     React.createElement(
                                         "tbody",
                                         null,
@@ -1367,7 +1367,7 @@ var EventList = function (_React$Component) {
                                             React.createElement(
                                                 "td",
                                                 { className: "col-md-4" },
-                                                "Agent Name"
+                                                "Application Name"
                                             ),
                                             React.createElement(
                                                 "td",
@@ -1380,7 +1380,7 @@ var EventList = function (_React$Component) {
                                                 "Actions"
                                             )
                                         ),
-                                        item["jobSpecs"].map(createAgentRow.bind(this, item["type"], index))
+                                        item["jobSpecs"].map(createApplicationRow.bind(this, item["type"], index))
                                     )
                                 )
                             )
@@ -1653,7 +1653,7 @@ var ManageIModelPage = function (_React$Component) {
             events: [],
             eventList: [],
             eventExpandedState: [],
-            isShowAgentRegDlg: false,
+            isShowApplicationRegDlg: false,
             isProcessing: false,
             selectedEvent: ""
         };
@@ -1674,12 +1674,12 @@ var ManageIModelPage = function (_React$Component) {
             return _isImodelRegistered;
         };
 
-        var _agents = {};
-        _this.setRegisteredAgents = function (agents) {
-            _agents = agents;
+        var _applications = {};
+        _this.setRegisteredApplications = function (applications) {
+            _applications = applications;
         };
-        _this.getRegisteredAgents = function () {
-            return _agents;
+        _this.getRegisteredApplications = function () {
+            return _applications;
         };
         //this.toggleModal = this.toggleModal.bind(this);
 
@@ -1689,25 +1689,25 @@ var ManageIModelPage = function (_React$Component) {
     _createClass(ManageIModelPage, [{
         key: 'componentWillMount',
         value: function componentWillMount() {
-            this.getAgents();
+            this.getApplications();
             this.getImodelJobSpecs();
             //this.setState({eventList: eventTypes_all});
         }
     }, {
-        key: 'getAgents',
-        value: function getAgents() {
+        key: 'getApplications',
+        value: function getApplications() {
             $.ajax({
-                url: '/api/v1.0/agents',
+                url: '/api/v1.0/applications',
                 dataType: 'json',
                 type: "get",
                 cache: false,
                 success: function (data) {
-                    var agentsData = {};
-                    data.forEach(function (agent, index) {
-                        var agentId = agent.agentId;
-                        agentsData[agentId] = agent;
+                    var applicationsData = {};
+                    data.forEach(function (application, index) {
+                        var applicationId = application.applicationId;
+                        applicationsData[applicationId] = application;
                     });
-                    this.setRegisteredAgents(agentsData);
+                    this.setRegisteredApplications(applicationsData);
                 }.bind(this),
                 error: function error(xhr, status, err) {
                     toastr.error("error encounterd retrieving data");
@@ -1753,7 +1753,7 @@ var ManageIModelPage = function (_React$Component) {
                         eventList: updatedEventList,
                         selectedEvent: updatedEventList[0]
                     });
-                    //console.log ("imodel agent[0] event="+this.state.events[0].Type);
+                    //console.log ("imodel application[0] event="+this.state.events[0].Type);
                 }.bind(this),
                 error: function (xhr, status, err) {
 
@@ -1857,20 +1857,20 @@ var ManageIModelPage = function (_React$Component) {
             });
         }
     }, {
-        key: 'removeAgent',
-        value: function removeAgent(eventType, agentIndex) {
+        key: 'removeApplication',
+        value: function removeApplication(eventType, applicationIndex) {
             var _this3 = this;
 
-            //console.log ("removeAgent = " + eventType +":"+ agentIndex);
+            //console.log ("removeApplication = " + eventType +":"+ applicationIndex);
             var events = this.state.events.slice();
             var event = _.find(events, { type: eventType });
-            // event["Jobs"].splice(agentIndex,1);
+            // event["Jobs"].splice(applicationIndex,1);
             var _props$match$params3 = this.props.match.params,
                 imodelid = _props$match$params3.imodelid,
                 projectid = _props$match$params3.projectid;
 
-            var jobSpecId = event["jobSpecs"][agentIndex].id;
-            toastr.info("Deleing agent");
+            var jobSpecId = event["jobSpecs"][applicationIndex].id;
+            toastr.info("Deleing application");
             this.setState({ isProcessing: true });
 
             $.ajax({
@@ -1878,7 +1878,7 @@ var ManageIModelPage = function (_React$Component) {
                 type: "DELETE"
             }).then(function (res) {
                 // const eventIndex = _.findIndex(events, {Type: eventType});
-                event.jobSpecs.splice(agentIndex, 1);
+                event.jobSpecs.splice(applicationIndex, 1);
                 _this3.setState({ isProcessing: false, events: events });
                 toastr.clear();
                 toastr.success("Deleted");
@@ -1891,57 +1891,57 @@ var ManageIModelPage = function (_React$Component) {
             });
         }
     }, {
-        key: 'getAvailableAgents',
-        value: function getAvailableAgents() {
+        key: 'getAvailableApplications',
+        value: function getAvailableApplications() {
             //this is used for deep copy
-            var availableAgents = JSON.parse(JSON.stringify(this.getRegisteredAgents()));
+            var availableApplications = JSON.parse(JSON.stringify(this.getRegisteredApplications()));
             var activeEventName = this.getActiveEventName();
             var event = _.find(this.state.events, { "type": activeEventName });
 
             event.jobSpecs.forEach(function (item, index) {
-                // _.remove(availableAgents, function(agentName){
-                //     return agentName ===item.name;
+                // _.remove(availableApplications, function(applicationName){
+                //     return applicationName ===item.name;
                 // });
-                delete availableAgents[item.agentId];
+                delete availableApplications[item.applicationId];
             }, this);
-            return availableAgents;
+            return availableApplications;
         }
     }, {
         key: 'toggleModal',
         value: function toggleModal(eventName) {
             //console.log ("toggleModal: event param = " + eventName);
             this.setState({
-                isShowAgentRegDlg: !this.state.isShowAgentRegDlg
+                isShowApplicationRegDlg: !this.state.isShowApplicationRegDlg
             });
 
             this.setActiveEventName(eventName); //reset active event name
         }
     }, {
-        key: 'addAgentData',
-        value: function addAgentData(agentInfo) {
+        key: 'addApplicationData',
+        value: function addApplicationData(applicationInfo) {
             var _this4 = this;
 
             var events = this.state.events.slice();
-            var event = _.find(events, { type: agentInfo.eventName });
-            var agentObject = {
-                name: agentInfo.agentName,
-                timeout: agentInfo.agentDuration
+            var event = _.find(events, { type: applicationInfo.eventName });
+            var applicationObject = {
+                name: applicationInfo.applicationName,
+                timeout: applicationInfo.applicationDuration
             };
             var _props$match$params4 = this.props.match.params,
                 projectid = _props$match$params4.projectid,
                 imodelid = _props$match$params4.imodelid;
 
             var payload = {
-                "eventType": agentInfo.eventName,
-                "agentId": agentInfo.agentName,
-                "timeout": agentInfo.agentDuration
+                "eventType": applicationInfo.eventName,
+                "applicationId": applicationInfo.applicationName,
+                "timeout": applicationInfo.applicationDuration
                 // if(this.getIsImodelRegistered()){
-            };toastr.info("Adding agent");
+            };toastr.info("Adding application");
             this.setState({ isProcessing: true });
             $.post('/projects/' + projectid + '/imodels/' + imodelid + '/job-specs/', payload).then(function (res) {
                 toastr.clear();
                 if (res.body && res.body[0]) {
-                    toastr.success("Agent added");
+                    toastr.success("Application added");
                     event["jobSpecs"].push(res.body[0]);
                     _this4.setState({ events: events, isProcessing: false });
                 } else {
@@ -1955,23 +1955,23 @@ var ManageIModelPage = function (_React$Component) {
             });
             // }
             // else{
-            // 	event["Jobs"].push(agentObject);
+            // 	event["Jobs"].push(applicationObject);
             // 	this.setState({events: events});
             // 	this.registerImodel();
             // }
         }
     }, {
-        key: 'addAgentAgainstEvent',
-        value: function addAgentAgainstEvent(agentName, agentDuration) {
+        key: 'addApplicationAgainstEvent',
+        value: function addApplicationAgainstEvent(applicationName, applicationDuration) {
 
             var activeEventName = this.getActiveEventName();
             //console.log ("active event name=" + activeEventName);
 
-            agentDuration = agentDuration.replace(/\s/g, '').replace('min', '');
+            applicationDuration = applicationDuration.replace(/\s/g, '').replace('min', '');
 
-            //var selectedAgent = "#" + dropdown_name + " option:selected";
-            //console.log ("url = " + 'http://localhost:8000/authorizeagent/' + agentName + '/' + this.props.match.params.imodelid + '/' + activeEventName);
-            var win = window.open('http://localhost:8000/authorizeagent/' + agentName + '/' + this.props.match.params.imodelid + '/' + activeEventName, 'popUpWindow', 'height=400,width=600,left=10,top=10,,scrollbars=yes,menubar=no');
+            //var selectedApplication = "#" + dropdown_name + " option:selected";
+            //console.log ("url = " + 'http://localhost:8000/authorizeapplication/' + applicationName + '/' + this.props.match.params.imodelid + '/' + activeEventName);
+            var win = window.open('http://localhost:8000/authorizeapplication/' + applicationName + '/' + this.props.match.params.imodelid + '/' + activeEventName, 'popUpWindow', 'height=400,width=600,left=10,top=10,,scrollbars=yes,menubar=no');
             var timer = setInterval(function () {
                 if (win.closed) {
                     clearInterval(timer);
@@ -1980,16 +1980,16 @@ var ManageIModelPage = function (_React$Component) {
                 } else if (win.document.location.href == 'http://localhost:8000/error') {
                     clearInterval(timer);
                     win.close();
-                } else if (win.document.location.href == 'http://localhost:8000/agentregistered') {
+                } else if (win.document.location.href == 'http://localhost:8000/applicationregistered') {
 
                     clearInterval(timer);
                     win.close();
 
                     this.toggleModal("");
-                    this.addAgentData({
+                    this.addApplicationData({
                         eventName: activeEventName,
-                        agentName: agentName,
-                        agentDuration: agentDuration
+                        applicationName: applicationName,
+                        applicationDuration: applicationDuration
                     });
                 }
             }.bind(this), 2000);
@@ -2108,19 +2108,19 @@ var ManageIModelPage = function (_React$Component) {
                     ),
                     React.createElement(EventList, {
                         eventList: this.state.events,
-                        registeredAgents: this.getRegisteredAgents(),
-                        onAddAgentClick: this.toggleModal.bind(this),
-                        onRemoveAgent: this.removeAgent.bind(this),
+                        registeredApplications: this.getRegisteredApplications(),
+                        onAddApplicationClick: this.toggleModal.bind(this),
+                        onRemoveApplication: this.removeApplication.bind(this),
                         eventExpandedState: this.state.eventExpandedState,
                         onToggleEvent: this.toggleCollapseList.bind(this),
                         onValueChange: this.onValueChange.bind(this)
                     })
                 ),
                 React.createElement(Modal, {
-                    show: this.state.isShowAgentRegDlg,
+                    show: this.state.isShowApplicationRegDlg,
                     onClose: this.toggleModal.bind(this, ""),
-                    getAvailableAgents: this.getAvailableAgents.bind(this),
-                    onAuthorize: this.addAgentAgainstEvent.bind(this) })
+                    getAvailableApplications: this.getAvailableApplications.bind(this),
+                    onAuthorize: this.addApplicationAgainstEvent.bind(this) })
             );
         }
     }]);
@@ -2131,16 +2131,16 @@ var ManageIModelPage = function (_React$Component) {
 module.exports = ManageIModelPage;
 
 /*
-var createAgentRow = function(eventType, item,index) {
+var createApplicationRow = function(eventType, item,index) {
     return(
-        <tr key={"agent-row"+index}>
+        <tr key={"application-row"+index}>
             <td> <p>{item["name"]}</p> </td> 
             <td> <p>{item["timeout"]}</p> </td> 
             <td> 
                 <button className="btn btn-default btn-xs" type="button">
                     <span className="glyphicon glyphicon-pencil"></span>
                 </button> 
-                <button type="button" className=" btn btn-xs" onClick={this.removeAgent.bind(this,eventType, index)}>
+                <button type="button" className=" btn btn-xs" onClick={this.removeApplication.bind(this,eventType, index)}>
                     <span className="glyphicon glyphicon-remove"></span>
                 </button>
             </td>
@@ -2161,23 +2161,23 @@ var createAgentRow = function(eventType, item,index) {
              <div id={item["Type"]+"-div-body"} aria-expanded="true" >
                 <div id={item["Type"]+"-list"} className="hidden col-md-3 col-md-offset-7"> 
                     <select className="selectpicker form-control  "> 
-                        <option value="sampleagent">sampleagent</option>
-                        <option value="sampleagent2">sampleagent2</option>
-                        <option value="sampleagent23">sampleagent23</option>
+                        <option value="sampleapplication">sampleapplication</option>
+                        <option value="sampleapplication2">sampleapplication2</option>
+                        <option value="sampleapplication23">sampleapplication23</option>
                     </select>
                 </div>
                 <button type="button" id={item["Type"]+"-button"} className="col-md-2 col-md-offset-10 btn btn-default" onClick={this.toggleModal.bind(this, item["Type"] )}>
-                    <span className="glyphicon glyphicon-plus"></span> Add Agent
+                    <span className="glyphicon glyphicon-plus"></span> Add Application
                 </button>
                 <div className="col-md-12" style={{marginTop:15}}>
-                    <table className="table table-sm" id={item["Type"]+"-AgentList"}>
+                    <table className="table table-sm" id={item["Type"]+"-ApplicationList"}>
                         <tbody>
                             <tr style={{fontWeight:'bold'}}>
-                                <td className="col-md-4">Agent Name</td>
+                                <td className="col-md-4">Application Name</td>
                                 <td className="col-md-4">Duration (mins)</td>
                                 <td className="col-md-4">Actions</td>
                             </tr>                                    
-                            {item["Jobs"].map(createAgentRow.bind(this, item["Type"]))}  
+                            {item["Jobs"].map(createApplicationRow.bind(this, item["Type"]))}  
                         </tbody>
                     </table>
                 </div>
@@ -2197,27 +2197,27 @@ var createAgentRow = function(eventType, item,index) {
             </div>
         </div>
         <div id="ChangeSetPostPushEvent-div-body" aria-expanded="true" style="">
-            <div id="ChangeSetPostPushEvent-list" class="col-md-3 col-md-offset-7"> <select class="selectpicker form-control  "> <option value="sampleagent">sampleagent</option><option value="sampleagent2">sampleagent2</option><option value="sampleagent23">sampleagent23</option></select> 
+            <div id="ChangeSetPostPushEvent-list" class="col-md-3 col-md-offset-7"> <select class="selectpicker form-control  "> <option value="sampleapplication">sampleapplication</option><option value="sampleapplication2">sampleapplication2</option><option value="sampleapplication23">sampleapplication23</option></select> 
             </div>
             <button type="button" id="ChangeSetPostPushEvent-button" class="btn btn-default">
-                <span class="glyphicon glyphicon-plus"></span> Add Agent
+                <span class="glyphicon glyphicon-plus"></span> Add Application
             </button>
             <div class="col-md-12" style="margin-top:15px;">
                 <table class="table table-sm" id="ChangeSetPostPushEvent">
                     <tbody>
                         <tr style="font-weight:bold">
-                            <td class="col-md-4">Agent Name</td>
+                            <td class="col-md-4">Application Name</td>
                             <td class="col-md-4">Duration</td>
                             <td class="col-md-4">Actions</td>
                         </tr>		
                         <tr>
-                            <td> <p>sampleagent24</p> </td> 
+                            <td> <p>sampleapplication24</p> </td> 
                             <td> <p>15 min</p> </td> 
                             <td> 
-                                <button class="btn btn-default btn-xs" type="button " onclick="updateAgentAuthorization(this,ChangeSetPostPushEvent)">
+                                <button class="btn btn-default btn-xs" type="button " onclick="updateApplicationAuthorization(this,ChangeSetPostPushEvent)">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </button> 
-                                <button type="button" class=" btn btn-xs" onclick="removeAgent(this,ChangeSetPostPushEvent)">
+                                <button type="button" class=" btn btn-xs" onclick="removeApplication(this,ChangeSetPostPushEvent)">
                                     <span class="glyphicon glyphicon-remove"></span>
                                 </button>
                             </td>
@@ -2243,11 +2243,11 @@ events: [
         Type:'ChangeSetPrePushEvent',
         Jobs: [//eventJob
             {
-                name:'sampleagent1',
+                name:'sampleapplication1',
                 timeout:'15 min'
             },
             {
-                name:'sampleagent2',
+                name:'sampleapplication2',
                 timeout:'30 min'
             }
         ]
@@ -2256,11 +2256,11 @@ events: [
         Type:'iModelDeletedEvent',
         Jobs: [
             {
-                name:'sampleagent3',
+                name:'sampleapplication3',
                 timeout:'15 min'
             },
             {
-                name:'sampleagent4',
+                name:'sampleapplication4',
                 timeout:'30 min'
             }
         ]
@@ -2292,12 +2292,12 @@ var Modal = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Modal.__proto__ || Object.getPrototypeOf(Modal)).call(this, props));
 
-    var _selectedAgent = "";
-    _this.setSelectedAgent = function (value) {
-      _selectedAgent = value;
+    var _selectedApplication = "";
+    _this.setSelectedApplication = function (value) {
+      _selectedApplication = value;
     };
-    _this.getSelectedAgentId = function () {
-      return _selectedAgent.agentId;
+    _this.getSelectedApplicationId = function () {
+      return _selectedApplication.applicationId;
     };
 
     var _selectedDuration = "";
@@ -2307,15 +2307,15 @@ var Modal = function (_React$Component) {
     _this.getSelectedDuration = function () {
       return _selectedDuration;
     };
-    _this.agents = {};
+    _this.applications = {};
     return _this;
   }
 
   _createClass(Modal, [{
-    key: 'onAgentSelect',
-    value: function onAgentSelect(event) {
+    key: 'onApplicationSelect',
+    value: function onApplicationSelect(event) {
       event.preventDefault();
-      this.setSelectedAgent(this.agents[event.target.value] || {});
+      this.setSelectedApplication(this.applications[event.target.value] || {});
     }
   }, {
     key: 'onDurationSelect',
@@ -2327,29 +2327,29 @@ var Modal = function (_React$Component) {
     key: 'onAuthorize',
     value: function onAuthorize(event) {
 
-      //var selectedAgent = $("#agent-list option:selected").text();
+      //var selectedApplication = $("#application-list option:selected").text();
       //var selectedDuration = $("#duration-input option:selected").text();
 
-      this.props.onAuthorize(this.getSelectedAgentId(), this.getSelectedDuration());
+      this.props.onAuthorize(this.getSelectedApplicationId(), this.getSelectedDuration());
     }
   }, {
     key: 'render',
     value: function render() {
       // Render nothing if the "show" prop is false
       if (!this.props.show) {
-        this.setSelectedAgent("");
+        this.setSelectedApplication("");
         return null;
       }
 
-      this.agents = this.props.getAvailableAgents();
-      this.setSelectedAgent(this.agents[Object.keys(this.agents)[0]]);
+      this.applications = this.props.getAvailableApplications();
+      this.setSelectedApplication(this.applications[Object.keys(this.applications)[0]]);
       this.setSelectedDuration("15");
 
       var createSelectOption = function createSelectOption(id, index) {
         return React.createElement(
           'option',
           { key: "item" + index, value: id },
-          this.agents[id].agentName
+          this.applications[id].applicationName
         );
       };
 
@@ -2381,8 +2381,8 @@ var Modal = function (_React$Component) {
               ),
               React.createElement(
                 'h4',
-                { className: 'modal-title', id: 'agent-config-title' },
-                'Add Agent'
+                { className: 'modal-title', id: 'application-config-title' },
+                'Add Application'
               )
             ),
             React.createElement(
@@ -2390,16 +2390,16 @@ var Modal = function (_React$Component) {
               { className: 'modal-body' },
               React.createElement(
                 'div',
-                { id: 'agent-list', className: 'form-group' },
+                { id: 'application-list', className: 'form-group' },
                 React.createElement(
                   'label',
-                  { htmlFor: 'agent-list' },
-                  'Agent Name'
+                  { htmlFor: 'application-list' },
+                  'Application Name'
                 ),
                 React.createElement(
                   'select',
-                  { className: 'selectpicker form-control  ', onChange: this.onAgentSelect.bind(this) },
-                  Object.keys(this.agents).map(createSelectOption, this)
+                  { className: 'selectpicker form-control  ', onChange: this.onApplicationSelect.bind(this) },
+                  Object.keys(this.applications).map(createSelectOption, this)
                 )
               ),
               React.createElement(
@@ -2461,7 +2461,7 @@ var Modal = function (_React$Component) {
 Modal.propTypes = {
   onClose: PropTypes.func.isRequired,
   onAuthorize: PropTypes.func.isRequired,
-  getAvailableAgents: PropTypes.func.isRequired,
+  getAvailableApplications: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired
 };
 
@@ -2640,10 +2640,10 @@ var EventList = function (_React$Component) {
             this.props.onToggleEvent(ID);
         }
     }, {
-        key: "onAgentViewLogsClick",
-        value: function onAgentViewLogsClick(ID, agentName, event) {
+        key: "onApplicationViewLogsClick",
+        value: function onApplicationViewLogsClick(ID, applicationName, event) {
 
-            this.props.onAgentViewLogsClick(ID, agentName);
+            this.props.onApplicationViewLogsClick(ID, applicationName);
         }
     }, {
         key: "render",
@@ -2652,7 +2652,7 @@ var EventList = function (_React$Component) {
             var createEventRow = function createEventRow(ID, item, index) {
                 return React.createElement(
                     "tr",
-                    { key: "agent-row" + index },
+                    { key: "application-row" + index },
                     React.createElement(
                         "td",
                         { className: "col-md-3" },
@@ -2660,7 +2660,7 @@ var EventList = function (_React$Component) {
                             "p",
                             null,
                             " ",
-                            this.props.getAgentName(item["agentId"]),
+                            this.props.getApplicationName(item["applicationId"]),
                             " "
                         )
                     ),
@@ -2683,7 +2683,7 @@ var EventList = function (_React$Component) {
                         { className: "col-md-3" },
                         React.createElement(
                             "button",
-                            { type: "button", className: "btn btn-default col-md-4", id: ID, onClick: this.onAgentViewLogsClick.bind(this, ID, item["agentId"]) },
+                            { type: "button", className: "btn btn-default col-md-4", id: ID, onClick: this.onApplicationViewLogsClick.bind(this, ID, item["applicationId"]) },
                             "View Logs"
                         )
                     )
@@ -2725,7 +2725,7 @@ var EventList = function (_React$Component) {
                                 { className: "col-md-12", style: { marginTop: 15 } },
                                 React.createElement(
                                     "table",
-                                    { className: "table table-sm", id: item["id"] + "-AgentList" },
+                                    { className: "table table-sm", id: item["id"] + "-ApplicationList" },
                                     React.createElement(
                                         "tbody",
                                         null,
@@ -2735,7 +2735,7 @@ var EventList = function (_React$Component) {
                                             React.createElement(
                                                 "td",
                                                 { className: "col-md-3" },
-                                                "Agent Name"
+                                                "Application Name"
                                             ),
                                             React.createElement(
                                                 "td",
@@ -2753,7 +2753,7 @@ var EventList = function (_React$Component) {
                                                 "Actions"
                                             )
                                         ),
-                                        item["agentLogs"].map(createEventRow.bind(this, item["id"]))
+                                        item["applicationLogs"].map(createEventRow.bind(this, item["id"]))
                                     )
                                 )
                             )
@@ -2780,7 +2780,7 @@ module.exports = EventList;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _agents = require('../agents/agents.service');
+var _applications = require('../applications/applications.service');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2807,15 +2807,15 @@ var LogsPage = function (_React$Component) {
             events: [],
             isShowLogsDlg: false,
             logs: "",
-            agents: {}
+            applications: {}
 
         };
         _this.getEventHistory = _this.getEventHistory.bind(_this);
         _this.toggleModal = _this.toggleModal.bind(_this);
-        _this.getAgents = _this.getAgents.bind(_this);
-        _this.getAgentName = _this.getAgentName.bind(_this);
+        _this.getApplications = _this.getApplications.bind(_this);
+        _this.getApplicationName = _this.getApplicationName.bind(_this);
         //this._onChange = this._onChange.bind(this);
-        _this.agentService = new _agents.AgentService();
+        _this.applicationService = new _applications.ApplicationService();
         return _this;
     }
 
@@ -2823,29 +2823,29 @@ var LogsPage = function (_React$Component) {
         key: 'componentWillMount',
         value: function componentWillMount() {
             this.getEventHistory();
-            this.getAgents();
+            this.getApplications();
         }
     }, {
-        key: 'getAgents',
-        value: function getAgents() {
+        key: 'getApplications',
+        value: function getApplications() {
             var _this2 = this;
 
-            this.agentService.list().then(function (res) {
-                var agentsData = {};
-                res.forEach(function (agent, index) {
-                    var agentId = agent.agentId;
-                    agentsData[agentId] = agent;
+            this.applicationService.list().then(function (res) {
+                var applicationsData = {};
+                res.forEach(function (application, index) {
+                    var applicationId = application.applicationId;
+                    applicationsData[applicationId] = application;
                 });
-                _this2.setState({ agents: agentsData });
+                _this2.setState({ applications: applicationsData });
             }, function (err) {
                 console.log(err);
             });
         }
     }, {
-        key: 'getAgentName',
-        value: function getAgentName(agentId) {
-            var agents = JSON.parse(JSON.stringify(this.state.agents));
-            return agents[agentId] ? agents[agentId].agentName : "";
+        key: 'getApplicationName',
+        value: function getApplicationName(applicationId) {
+            var applications = JSON.parse(JSON.stringify(this.state.applications));
+            return applications[applicationId] ? applications[applicationId].applicationName : "";
         }
     }, {
         key: 'toggleCollapseList',
@@ -2856,8 +2856,8 @@ var LogsPage = function (_React$Component) {
             this.setState({ eventExpandedState: expandedState });
         }
     }, {
-        key: 'onAgentViewLogsClick',
-        value: function onAgentViewLogsClick(ID, agentId) {
+        key: 'onApplicationViewLogsClick',
+        value: function onApplicationViewLogsClick(ID, applicationId) {
 
             var selectedEvent = this.state.events.find(function (event) {
                 if (event.id === ID) {
@@ -2865,11 +2865,11 @@ var LogsPage = function (_React$Component) {
                 }
             });
 
-            var selectedAgent = selectedEvent.agentLogs.find(function (agent) {
-                if (agent.agentId === agentId) return agent;
+            var selectedApplication = selectedEvent.applicationLogs.find(function (application) {
+                if (application.applicationId === applicationId) return application;
             });
 
-            this.setState({ logs: selectedAgent.logs });
+            this.setState({ logs: selectedApplication.logs });
             this.toggleModal();
         }
     }, {
@@ -2928,10 +2928,10 @@ var LogsPage = function (_React$Component) {
                 React.createElement(EventList, {
                     events: this.state.events,
                     projectid: this.props.match != undefined ? this.props.match.params.projectid : "",
-                    onAgentViewLogsClick: this.onAgentViewLogsClick.bind(this),
+                    onApplicationViewLogsClick: this.onApplicationViewLogsClick.bind(this),
                     eventExpandedState: this.state.eventExpandedState,
                     onToggleEvent: this.toggleCollapseList.bind(this),
-                    getAgentName: this.getAgentName.bind(this)
+                    getApplicationName: this.getApplicationName.bind(this)
                 }),
                 React.createElement(
                     'div',
@@ -2951,7 +2951,7 @@ var LogsPage = function (_React$Component) {
 
 module.exports = LogsPage;
 
-},{"../agents/agents.service":5,"./eventList":17,"./modal":19,"jquery":49,"react":90,"react-router-dom":75}],19:[function(require,module,exports){
+},{"../applications/applications.service":5,"./eventList":17,"./modal":19,"jquery":49,"react":90,"react-router-dom":75}],19:[function(require,module,exports){
 
 "use strict";
 
@@ -3040,8 +3040,8 @@ var Modal = function (_React$Component) {
               ),
               React.createElement(
                 'h4',
-                { className: 'modal-title', id: 'agent-config-title' },
-                'Agent Logs'
+                { className: 'modal-title', id: 'application-config-title' },
+                'Application Logs'
               )
             ),
             React.createElement(
@@ -3111,8 +3111,8 @@ var NotFoundPage = function (_React$Component) {
                 ),
                 React.createElement(
                     Link,
-                    { to: '/ui/registeragent' },
-                    'Load new component'
+                    { to: '/ui/registerapplication' },
+                    'View OAuth Application Component'
                 )
             );
         }
@@ -3935,7 +3935,7 @@ var getConfirmation = exports.getConfirmation = function getConfirmation(message
  * changed to avoid false negatives for Windows Phones: https://github.com/reactjs/react-router/issues/586
  */
 var supportsHistory = exports.supportsHistory = function supportsHistory() {
-  var ua = window.navigator.userAgent;
+  var ua = window.navigator.userApplication;
 
   if ((ua.indexOf('Android 2.') !== -1 || ua.indexOf('Android 4.0') !== -1) && ua.indexOf('Mobile Safari') !== -1 && ua.indexOf('Chrome') === -1 && ua.indexOf('Windows Phone') === -1) return false;
 
@@ -3947,14 +3947,14 @@ var supportsHistory = exports.supportsHistory = function supportsHistory() {
  * IE10 and IE11 do not.
  */
 var supportsPopStateOnHashChange = exports.supportsPopStateOnHashChange = function supportsPopStateOnHashChange() {
-  return window.navigator.userAgent.indexOf('Trident') === -1;
+  return window.navigator.userApplication.indexOf('Trident') === -1;
 };
 
 /**
  * Returns false if using go(n) with hash history causes a full page reload.
  */
 var supportsGoWithoutReloadUsingHash = exports.supportsGoWithoutReloadUsingHash = function supportsGoWithoutReloadUsingHash() {
-  return window.navigator.userAgent.indexOf('Firefox') === -1;
+  return window.navigator.userApplication.indexOf('Firefox') === -1;
 };
 
 /**
@@ -3963,7 +3963,7 @@ var supportsGoWithoutReloadUsingHash = exports.supportsGoWithoutReloadUsingHash 
  * containing undefined state when pressing the back button.
  */
 var isExtraneousPopstateEvent = exports.isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
-  return event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1;
+  return event.state === undefined && navigator.userApplication.indexOf('CriOS') === -1;
 };
 },{}],39:[function(require,module,exports){
 'use strict';
@@ -35393,7 +35393,7 @@ var TOP_CUT = unsafeCastStringToDOMTopLevelType('cut');
 var TOP_DOUBLE_CLICK = unsafeCastStringToDOMTopLevelType('dblclick');
 var TOP_DRAG = unsafeCastStringToDOMTopLevelType('drag');
 var TOP_DRAG_END = unsafeCastStringToDOMTopLevelType('dragend');
-var TOP_DRAG_ENTER = unsafeCastStringToDOMTopLevelType('dragenter');
+var TOP_DRAG_ENTER = unsafeCastStringToDOMTopLevelType('drapplicationer');
 var TOP_DRAG_EXIT = unsafeCastStringToDOMTopLevelType('dragexit');
 var TOP_DRAG_LEAVE = unsafeCastStringToDOMTopLevelType('dragleave');
 var TOP_DRAG_OVER = unsafeCastStringToDOMTopLevelType('dragover');
@@ -51591,7 +51591,7 @@ var foundDevTools = injectIntoDevTools({
 {
   if (!foundDevTools && ExecutionEnvironment.canUseDOM && window.top === window.self) {
     // If we're in Chrome or Firefox, provide a download link if not installed.
-    if (navigator.userAgent.indexOf('Chrome') > -1 && navigator.userAgent.indexOf('Edge') === -1 || navigator.userAgent.indexOf('Firefox') > -1) {
+    if (navigator.userApplication.indexOf('Chrome') > -1 && navigator.userApplication.indexOf('Edge') === -1 || navigator.userApplication.indexOf('Firefox') > -1) {
       var protocol = window.location.protocol;
       // Don't warn in exotic cases like chrome-extension://.
       if (/^(https?|file):$/.test(protocol)) {
@@ -51699,12 +51699,12 @@ function sd(a){var b=a.keyCode;"charCode"in a?(a=a.charCode,0===a&&13===b&&(a=13
 var td={Esc:"Escape",Spacebar:" ",Left:"ArrowLeft",Up:"ArrowUp",Right:"ArrowRight",Down:"ArrowDown",Del:"Delete",Win:"OS",Menu:"ContextMenu",Apps:"ContextMenu",Scroll:"ScrollLock",MozPrintableKey:"Unidentified"},ud={8:"Backspace",9:"Tab",12:"Clear",13:"Enter",16:"Shift",17:"Control",18:"Alt",19:"Pause",20:"CapsLock",27:"Escape",32:" ",33:"PageUp",34:"PageDown",35:"End",36:"Home",37:"ArrowLeft",38:"ArrowUp",39:"ArrowRight",40:"ArrowDown",45:"Insert",46:"Delete",112:"F1",113:"F2",114:"F3",115:"F4",
 116:"F5",117:"F6",118:"F7",119:"F8",120:"F9",121:"F10",122:"F11",123:"F12",144:"NumLock",145:"ScrollLock",224:"Meta"},vd=cd.extend({key:function(a){if(a.key){var b=td[a.key]||a.key;if("Unidentified"!==b)return b}return"keypress"===a.type?(a=sd(a),13===a?"Enter":String.fromCharCode(a)):"keydown"===a.type||"keyup"===a.type?ud[a.keyCode]||"Unidentified":""},location:null,ctrlKey:null,shiftKey:null,altKey:null,metaKey:null,repeat:null,locale:null,getModifierState:fd,charCode:function(a){return"keypress"===
 a.type?sd(a):0},keyCode:function(a){return"keydown"===a.type||"keyup"===a.type?a.keyCode:0},which:function(a){return"keypress"===a.type?sd(a):"keydown"===a.type||"keyup"===a.type?a.keyCode:0}}),wd=gd.extend({dataTransfer:null}),xd=cd.extend({touches:null,targetTouches:null,changedTouches:null,altKey:null,metaKey:null,ctrlKey:null,shiftKey:null,getModifierState:fd}),yd=H.extend({propertyName:null,elapsedTime:null,pseudoElement:null}),zd=gd.extend({deltaX:function(a){return"deltaX"in a?a.deltaX:"wheelDeltaX"in
-a?-a.wheelDeltaX:0},deltaY:function(a){return"deltaY"in a?a.deltaY:"wheelDeltaY"in a?-a.wheelDeltaY:"wheelDelta"in a?-a.wheelDelta:0},deltaZ:null,deltaMode:null}),Ad=[["abort","abort"],[fb,"animationEnd"],[gb,"animationIteration"],[hb,"animationStart"],["canplay","canPlay"],["canplaythrough","canPlayThrough"],["drag","drag"],["dragenter","dragEnter"],["dragexit","dragExit"],["dragleave","dragLeave"],["dragover","dragOver"],["durationchange","durationChange"],["emptied","emptied"],["encrypted","encrypted"],
+a?-a.wheelDeltaX:0},deltaY:function(a){return"deltaY"in a?a.deltaY:"wheelDeltaY"in a?-a.wheelDeltaY:"wheelDelta"in a?-a.wheelDelta:0},deltaZ:null,deltaMode:null}),Ad=[["abort","abort"],[fb,"animationEnd"],[gb,"animationIteration"],[hb,"animationStart"],["canplay","canPlay"],["canplaythrough","canPlayThrough"],["drag","drag"],["drapplicationer","dragEnter"],["dragexit","dragExit"],["dragleave","dragLeave"],["dragover","dragOver"],["durationchange","durationChange"],["emptied","emptied"],["encrypted","encrypted"],
 ["ended","ended"],["error","error"],["gotpointercapture","gotPointerCapture"],["load","load"],["loadeddata","loadedData"],["loadedmetadata","loadedMetadata"],["loadstart","loadStart"],["lostpointercapture","lostPointerCapture"],["mousemove","mouseMove"],["mouseout","mouseOut"],["mouseover","mouseOver"],["playing","playing"],["pointermove","pointerMove"],["pointerout","pointerOut"],["pointerover","pointerOver"],["progress","progress"],["scroll","scroll"],["seeking","seeking"],["stalled","stalled"],
 ["suspend","suspend"],["timeupdate","timeUpdate"],["toggle","toggle"],["touchmove","touchMove"],[ib,"transitionEnd"],["waiting","waiting"],["wheel","wheel"]],Bd={},Cd={};function Dd(a,b){var c=a[0];a=a[1];var d="on"+(a[0].toUpperCase()+a.slice(1));b={phasedRegistrationNames:{bubbled:d,captured:d+"Capture"},dependencies:[c],isInteractive:b};Bd[a]=b;Cd[c]=b}
 [["blur","blur"],["cancel","cancel"],["click","click"],["close","close"],["contextmenu","contextMenu"],["copy","copy"],["cut","cut"],["dblclick","doubleClick"],["dragend","dragEnd"],["dragstart","dragStart"],["drop","drop"],["focus","focus"],["input","input"],["invalid","invalid"],["keydown","keyDown"],["keypress","keyPress"],["keyup","keyUp"],["mousedown","mouseDown"],["mouseup","mouseUp"],["paste","paste"],["pause","pause"],["play","play"],["pointercancel","pointerCancel"],["pointerdown","pointerDown"],
 ["pointerup","pointerUp"],["ratechange","rateChange"],["reset","reset"],["seeked","seeked"],["submit","submit"],["touchcancel","touchCancel"],["touchend","touchEnd"],["touchstart","touchStart"],["volumechange","volumeChange"]].forEach(function(a){Dd(a,!0)});Ad.forEach(function(a){Dd(a,!1)});
-var Ed={eventTypes:Bd,isInteractiveTopLevelEventType:function(a){a=Cd[a];return void 0!==a&&!0===a.isInteractive},extractEvents:function(a,b,c,d){var e=Cd[a];if(!e)return null;switch(a){case "keypress":if(0===sd(c))return null;case "keydown":case "keyup":a=vd;break;case "blur":case "focus":a=rd;break;case "click":if(2===c.button)return null;case "dblclick":case "mousedown":case "mousemove":case "mouseup":case "mouseout":case "mouseover":case "contextmenu":a=gd;break;case "drag":case "dragend":case "dragenter":case "dragexit":case "dragleave":case "dragover":case "dragstart":case "drop":a=
+var Ed={eventTypes:Bd,isInteractiveTopLevelEventType:function(a){a=Cd[a];return void 0!==a&&!0===a.isInteractive},extractEvents:function(a,b,c,d){var e=Cd[a];if(!e)return null;switch(a){case "keypress":if(0===sd(c))return null;case "keydown":case "keyup":a=vd;break;case "blur":case "focus":a=rd;break;case "click":if(2===c.button)return null;case "dblclick":case "mousedown":case "mousemove":case "mouseup":case "mouseout":case "mouseover":case "contextmenu":a=gd;break;case "drag":case "dragend":case "drapplicationer":case "dragexit":case "dragleave":case "dragover":case "dragstart":case "drop":a=
 wd;break;case "touchcancel":case "touchend":case "touchmove":case "touchstart":a=xd;break;case fb:case gb:case hb:a=pd;break;case ib:a=yd;break;case "scroll":a=cd;break;case "wheel":a=zd;break;case "copy":case "cut":case "paste":a=qd;break;case "gotpointercapture":case "lostpointercapture":case "pointercancel":case "pointerdown":case "pointermove":case "pointerout":case "pointerover":case "pointerup":a=hd;break;default:a=H}b=a.getPooled(e,b,c,d);Ya(b);return b}},Fd=Ed.isInteractiveTopLevelEventType,
 Gd=[];function Hd(a){var b=a.targetInst;do{if(!b){a.ancestors.push(b);break}var c;for(c=b;c.return;)c=c.return;c=3!==c.tag?null:c.stateNode.containerInfo;if(!c)break;a.ancestors.push(b);b=Na(c)}while(b);for(c=0;c<a.ancestors.length;c++)b=a.ancestors[c],Ja(a.topLevelType,b,a.nativeEvent,Zb(a.nativeEvent))}var Id=!0;function Kd(a){Id=!!a}function K(a,b){if(!b)return null;var c=(Fd(a)?Ld:Md).bind(null,a);b.addEventListener(a,c,!1)}
 function Nd(a,b){if(!b)return null;var c=(Fd(a)?Ld:Md).bind(null,a);b.addEventListener(a,c,!0)}function Ld(a,b){Tb(Md,a,b)}function Md(a,b){if(Id){var c=Zb(b);c=Na(c);null===c||"number"!==typeof c.tag||2===kd(c)||(c=null);if(Gd.length){var d=Gd.pop();d.topLevelType=a;d.nativeEvent=b;d.targetInst=c;a=d}else a={topLevelType:a,nativeEvent:b,targetInst:c,ancestors:[]};try{Wb(Hd,a)}finally{a.topLevelType=null,a.nativeEvent=null,a.targetInst=null,a.ancestors.length=0,10>Gd.length&&Gd.push(a)}}}
